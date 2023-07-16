@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
     'reservation',
 ]
 
@@ -89,6 +91,25 @@ DATABASES = {
     }
 }
 
+# Rest framework
+# 
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework_xml.renderers.XMLRenderer',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+    ),
+}
+
+# Djoser
+# https://djoser.readthedocs.io/en/latest/
+
+DJOSER={"USER_ID_FIELD":"username"}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
